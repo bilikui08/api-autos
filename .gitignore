@@ -1,0 +1,11 @@
+.idea/
+.vscode/
+/coverage/
+/vendor/
+logs/.gitkeep
+!/logs/README.md
+.phpunit.result.cache
+.env
+.env.*
+!/.env.dist   # ¡Importante! No ignorar .env.dist
+composer.lock
