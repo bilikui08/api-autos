@@ -5,7 +5,10 @@
 /logs/*
 !/logs/.gitkeep
 .phpunit.result.cache
+composer.lock
+# Ignorar todos los archivos .env
 .env
 .env.*
-!/.env.dist   # ¡Importante! No ignorar .env.dist
-composer.lock
+
+# ¡Pero permitir versionar solo .env.dist!
+!/.env.dist
