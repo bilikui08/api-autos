@@ -2,8 +2,8 @@
 .vscode/
 /coverage/
 /vendor/
-logs/.gitkeep
-!/logs/README.md
+/logs/*
+!/logs/.gitkeep
 .phpunit.result.cache
 .env
 .env.*
