@@ -27,14 +27,14 @@ class PlayerAction
         try {
             $acessToken = $this->authService->getAccessToken();
             if ($acessToken) {
-                $response = $this->client->get('api/v1/cars/players', [
+                $responseGuzzle = $this->client->get('api/v1/cars/players', [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $acessToken,
                         'Accept'        => 'application/json',
                     ]
                 ]);
 
-                $data = json_decode($response->getBody()->getContents(), true);
+                $data = json_decode($responseGuzzle->getBody()->getContents(), true);
 
                 return $this->jsonResponder->respond($response, $data);
             }

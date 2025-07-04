@@ -13,9 +13,8 @@ class JsonResponder
             'data'   => $data
         ];
         
-        //var_dump($payload); exit;
-
         $response->getBody()->write(json_encode($payload));
+
         return $response
             ->withHeader('Content-Type', 'application/json')
             ->withStatus($status);
