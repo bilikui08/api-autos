@@ -1,18 +1,16 @@
 # API Autos
 
-A RESTful API for managing automobile data.
+A RESTful API for managing cars reservations with Conectaas API.
 
 ## Features
 
-- CRUD operations for cars
-- Search and filter vehicles
-- Authentication and authorization
+- Authentication and authorization with Conectaas
 - JSON responses
 - Caching with Redis
 
 ## Technologies
 
-- Docker
+- [Docker](https://www.docker.com/)
 - [Slim4 Framework](https://www.slimframework.com/) (for PHP-based microservices)
 - [Redis](https://redis.io/) (for caching and session management)
 
@@ -35,25 +33,29 @@ A RESTful API for managing automobile data.
 
 2. Start the application:
     ```bash
-    docker-compose up
+    docker-compose up -d
     ```
 
-3. The API will be available at `http://localhost:3000`.
+3. Copy .env.dist to env.local
+    ```bash
+    cp .env.dist .env.local
+    ```
+4. Complete .env.local with local configs
+
+5. The API will be available at `http://localhost:8080`.
 
 ## API Endpoints
 
-| Method | Endpoint         | Description           |
-|--------|------------------|----------------------|
-| GET    | /api/cars        | List all cars        |
-| GET    | /api/cars/:id    | Get car by ID        |
-| POST   | /api/cars        | Create a new car     |
-| PUT    | /api/cars/:id    | Update a car         |
-| DELETE | /api/cars/:id    | Delete a car         |
+| Method | Endpoint                 | Description                           |
+|--------|------------------------- |---------------------------------------|
+| GET    | /api/cars/players        | List all players cars                 |
+| GET    | /api/cars/stores         | List all stote cars by playerId       |
+| POST   | /api/cars/locations      | Create a new car                      |
 
 ## Example Request
 
 ```bash
-curl -X GET http://localhost:3000/api/cars
+curl -X GET http://localhost:3000/api/cars/players
 ```
 
 ## Slim4 & Redis Integration
@@ -67,4 +69,4 @@ MIT
 
 ## Author
 
-Your Name
+Ola Develoment Team

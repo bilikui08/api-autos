@@ -4,17 +4,15 @@ namespace App\Application\Actions\Auth;
 
 use Throwable;
 use App\Domain\Exceptions\InvalidCredentialsException;
-
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Domain\Services\Conectaas\AuthService;
-use Predis\Client;
+
 
 class LoginAction 
 {
     public function __construct(
-        private AuthService $authService,
-        private Client $redis
+        private AuthService $authService
     ) {}
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface 
@@ -24,9 +22,8 @@ class LoginAction
         $pass = $body['pass'] ?? '';
 
         try {
-            $token = $this->authService->getAccessToken($user, $pass);
+            $token = $this->authService->getAccessToken();
             if ($token) {
-                $this->redis->setex($token, 1800, 1);
                 $response->getBody()->write(json_encode(['token' => $token]));
                 return $response->withHeader('Content-Type', 'application/json');
             }

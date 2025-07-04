@@ -15,9 +15,8 @@ class JwtMiddleware
     private string $secret;
     private Client $redis;
 
-    public function __construct(string $secret, Client $redis) 
+    public function __construct(Client $redis) 
     {
-        $this->secret = $secret;
         $this->redis = $redis;
     }
 
@@ -29,7 +28,7 @@ class JwtMiddleware
         }
 
         $token = $matches[1];
-        if (!$this->redis->exists("token:$token")) {
+        if (!$this->redis->exists($token)) {
             return $this->unauthorized();
         }
 
